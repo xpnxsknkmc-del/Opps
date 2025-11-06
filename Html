@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Eco Saver — 플라스틱 줄이기 캠페인</title>
+<style>
+  :root {
+    --bg: #0e1b18;
+    --card: rgba(255, 255, 255, 0.08);
+    --accent: #00e5b5;
+    --text: #f1f1f1;
+    --font: 'Pretendard', sans-serif;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  h1 {
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  section {
+    background: var(--card);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  h2 {
+    color: var(--accent);
+  }
+  button {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  button:hover {
+    background: #00c19d;
+  }
+  #ai-result {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    background: rgba(255,255,255,0.05);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>AI Eco Saver</h1>
+    <p>AI가 도와주는 플라스틱 줄이기 캠페인 🌿</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>문제 의식</h2>
+      <p>
+        현대 사회에서 플라스틱은 생활의 편리함을 주지만, 해양 생태계와 토양 오염의 주요 원인이 되고 있습니다.
+        플라스틱 쓰레기는 분해되지 않고 수백 년간 환경에 남아 생물에게 치명적인 영향을 미칩니다.
+        그러나 많은 사람들은 자신이 하루에 얼마나 많은 플라스틱을 사용하는지 잘 알지 못합니다.
+      </p>
+    </section>
+
+    <section>
+      <h2>핵심 아이디어</h2>
+      <ul>
+        <li>AI가 사용자의 일상 습관(예: 음료컵, 포장재, 생수병 사용량)을 분석</li>
+        <li>AI 추천 시스템이 ‘하루 플라스틱 절감 행동’을 맞춤 제안</li>
+        <li>사용자가 실천한 기록을 남기면, ‘플라스틱 절감 달력’으로 시각화</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>AI 시뮬레이션 체험</h2>
+      <p>오늘 당신은 어떤 활동을 했나요?</p>
+      <select id="userAction">
+        <option value="">활동을 선택하세요</option>
+        <option value="cup">일회용 컵 사용</option>
+        <option value="bag">비닐봉지 사용</option>
+        <option value="bottle">생수병 구입</option>
+        <option value="none">모두 사용 안 함</option>
+      </select>
+      <button onclick="runAI()">AI에게 추천받기</button>
+      <div id="ai-result"></div>
+    </section>
+
+    <section>
+      <h2>웹페이지에서 구현한 내용</h2>
+      <ul>
+        <li>AI의 간단한 의사결정 알고리즘으로 맞춤형 행동 추천</li>
+        <li>HTML, CSS, JS를 활용한 반응형 인터페이스 구현</li>
+        <li>시민 참여형 환경 캠페인 기능 포함</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 AI Eco Saver | 환경을 위한 작은 변화, 지금 시작하세요 🌏
+  </footer>
+
+  <script>
+    function runAI() {
+      const action = document.getElementById("userAction").value;
+      const result = document.getElementById("ai-result");
+
+      let message = "";
+      if (action === "cup") {
+        message = "☕ 오늘은 텀블러를 사용해보세요! 일회용 컵 대신 다회용 컵을 사용하면 연간 500잔의 컵을 절약할 수 있습니다.";
+      } else if (action === "bag") {
+        message = "🛍 비닐봉지 대신 장바구니를 사용해보세요. 매년 수억 장의 비닐이 바다로 흘러갑니다.";
+      } else if (action === "bottle") {
+        message = "💧 생수병 대신 개인 물병을 챙겨보세요! 하루 한 병만 줄여도 연간 365개의 플라스틱병을 줄일 수 있어요.";
+      } else if (action === "none") {
+        message = "🌱 완벽해요! 오늘 당신은 환경 영웅입니다. 이 기록을 다른 사람과 공유해보세요!";
+      } else {
+        message = "활동을 선택해주세요 😊";
+      }
+
+      result.innerHTML = message;
+    }
+  </script>
+</body>
+</html>
